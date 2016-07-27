@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -g -Wall -std=c++11
+CFLAGS=-c -g -Wall
 LDFLAGS=-lpthread
 SOURCES=test_shmringbuffer.cc
 OBJECTS=$(SOURCES:.cc=.o)
