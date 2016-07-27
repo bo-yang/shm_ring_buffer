@@ -27,8 +27,10 @@ public:
         init(cap, master, path);
     }
     ~ShmRingBuffer() {
-        if (_v)
-            munmap((void *)_v, _shm_size);
+        if (_hdr)
+            munmap((void *)_hdr, _shm_size);
+        _hdr = NULL;
+        _lock = NULL;
         _v = NULL;
         //if (_master)
         //    shm_unlink(_shm_path);
@@ -311,7 +313,7 @@ ShmRingBuffer<T>::unparse() const {
     }
 
     for (int i = _hdr->_begin; i != _hdr->_end; i = (i+1) % _hdr->_capacity) {
-        ret += string((_v + i)->unparse()) + "\n";
+        ret += string((_v + i)->unparse()) + "\n"; // Suppose T has a unparse() member function
     }
     _lock->read_unlock();
     return ret;
