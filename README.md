@@ -1,7 +1,9 @@
 # shm_ring_buffer
 Shared-memory based ring buffer
 
-This is a C++ template of shared-memory based ring buffer, which is can be read/written by multiple processes. Due to the POSIX shared memory limitation, only [POD type](http://en.cppreference.com/w/cpp/concept/PODType) is supported. A builtin multi-reader/multi-writer lock is implemented in class `ShmRingBuffer` using pthread.
+This is a C++ template of shared-memory based ring buffer, which can be read/written by multiple processes. Due to the POSIX shared memory limitation, only [POD type](http://en.cppreference.com/w/cpp/concept/PODType) is supported. A builtin multi-reader/multi-writer lock is implemented in class `ShmRingBuffer` using pthread.
+
+For detailed explanation, please refer to my post: [Shared-memory Based Ring Buffer](http://www.bo-yang.net/2016/07/27/shared-memory-ring-buffer).
 
 To try this library out, download the source code to a directory, and run `make`. To clean the binaries, please use `make clean`.
 
